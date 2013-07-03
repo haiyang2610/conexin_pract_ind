@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;
+charset=utf-8">
+<meta name="viewport" id="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+     // Espera a que PhoneGap se inicie
+    function onBodyLoad() {
+	document.addEventListener("deviceready",onDeviceReady, false);
+    }
+
+
+    // PhoneGap esta listo, y ahora se pueden hacer llamadas a los métodos
+    //
+    function onDeviceReady() {
+	checkConnection();
+    }
+
+    function checkConnection() {
+        var networkState = navigator.network.connection.type;
+
+        var states = {};
+    states[Connection.UNKNOWN]  = 'Conexión desconocida';
+    states[Connection.ETHERNET] = 'Conexión ethernet';
+    states[Connection.WIFI]     = 'Conexión WiFi';
+    states[Connection.CELL_2G]  = 'Conexión movil 2G';
+    states[Connection.CELL_3G]  = 'Conexión movil 3G';
+    states[Connection.CELL_4G]  = 'Conexión movil 4G';
+    states[Connection.NONE]     = 'Sin conexión';
+
+        alert('Tipo de conexión: ' + states[networkState]);
+    }
+	
+</script>
+</head>
+
+<body onload="onBodyLoad()">
+	<p>Un mensaje te notificara el tipo de conexión.</p>
+</body>
+</html>
